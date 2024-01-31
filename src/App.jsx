@@ -1,10 +1,11 @@
+import { Notices } from "./components/Notices"
 
 function App() {
 
 
   return (
     <>
-      
+      <Notices/>
     </>
   )
 }
