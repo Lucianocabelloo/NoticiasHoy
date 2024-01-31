@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import NoticesCard from './NoticesCard'
 import NoticesSearch from './NoticesSearch'
 
 export const Notices = () => {
@@ -13,7 +14,7 @@ useEffect(() => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=pizza`)
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=pizza&language=es`)
       if (!response.ok) {
         throw new Error('La solicitud no fue exitosa');
     }
@@ -27,20 +28,14 @@ useEffect(() => {
   fetchData();
 }, [])
 
-console.log(notices)
-console.log(error)
+
 
   return (
     <>
-    <header>
-      <NoticesSearch/>
-    </header>
-    <main>
+    <main className='flex flex-wrap gap-5'>
       {notices.map((notice) => {
         return(
-          <div key={notice.id} className="card">
-            {notice.title}
-          </div>
+          <NoticesCard notice={notice} key={notice.article_id}/>
         )
       })}
     </main>
