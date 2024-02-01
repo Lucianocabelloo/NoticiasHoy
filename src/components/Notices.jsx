@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import NoticesSearch from './NoticesSearch'
+import NoticesCard from './NoticesCard'
 
-export const Notices = () => {
+export const Notices = ({search}) => {
+  
 
   const [notices, setNotices] = useState([])
   const [error, setError] = useState([])
 
-  const API_KEY = "pub_37454d5426d0dcf63af7cc56e952bc7cce3b6"
+  const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
 
 useEffect(() => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=pizza`)
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${search}&language=en`)
       if (!response.ok) {
         throw new Error('La solicitud no fue exitosa');
     }
@@ -25,22 +26,15 @@ useEffect(() => {
     }
   }
   fetchData();
-}, [])
+}, [search])
 
-console.log(notices)
-console.log(error)
 
   return (
     <>
-    <header>
-      <NoticesSearch/>
-    </header>
-    <main>
+    <main className='flex flex-wrap gap-5 p-5 justify-evenly'>
       {notices.map((notice) => {
         return(
-          <div key={notice.id} className="card">
-            {notice.title}
-          </div>
+          <NoticesCard notice={notice} key={notice.article_id}/>
         )
       })}
     </main>
