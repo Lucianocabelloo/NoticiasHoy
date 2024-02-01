@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Notices } from './Notices'
 
 const NoticesSearch = () => {
-    const storedNotices = JSON.parse(localStorage.getItem("Notices")) || [];
     const [keyData, setkeyData] = useState("")
-    const [Search, setSearch] = useState(storedNotices)
+    const [Search, setSearch] = useState([])
 
 
     
@@ -16,15 +15,12 @@ const NoticesSearch = () => {
     
         const handleSubmit = (e) => {
             e.preventDefault();
-            setSearch( [...Search, keyData]);
+            setSearch( [keyData]);
             setkeyData("");
           }
 
-          console.log(Search)
 
-     useEffect(() => {
-        localStorage.setItem("Notices", JSON.stringify(Search));
-      }, [Search]);
+  
 
   return (
     <>
@@ -67,7 +63,7 @@ const NoticesSearch = () => {
 
 </div>
     </div>
-    <Notices/>
+    <Notices search={Search} />
     </>
   )
 }

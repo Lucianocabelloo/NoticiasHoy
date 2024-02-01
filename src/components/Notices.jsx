@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import NoticesCard from './NoticesCard'
-import NoticesSearch from './NoticesSearch'
 
-export const Notices = () => {
+export const Notices = ({search}) => {
+  
 
   const [notices, setNotices] = useState([])
   const [error, setError] = useState([])
 
-  const API_KEY = "pub_37454d5426d0dcf63af7cc56e952bc7cce3b6"
+  const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
 
 useEffect(() => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=pizza&language=es`)
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${search}&language=en`)
       if (!response.ok) {
         throw new Error('La solicitud no fue exitosa');
     }
@@ -26,8 +26,7 @@ useEffect(() => {
     }
   }
   fetchData();
-}, [])
-
+}, [search])
 
 
   return (

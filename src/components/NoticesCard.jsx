@@ -11,18 +11,17 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 
 export default function NoticesCard({notice}) {
 
-    const MAX_DESCRIPTION_LENGTH = 120; // Establece la longitud máxima deseada
 
-    const truncatedDescription =
-      notice.description.length > 150
-        ? `${notice.description.substring(0, MAX_DESCRIPTION_LENGTH)}...`
-        : notice.description;
+  const truncatedDescription =
+ notice && typeof notice.description === 'string' && notice.description.length > 100
+    ? `${notice.description.substring(0, 100)}...`
+    : notice && notice.description;
+
     const truncatedtitle =
       notice.title.length > 50
         ? `${notice.title.substring(0, 40)}...`
         : notice.title;
 
-    
   
   return (
     <Box className="css-n7pinj" sx={{ minHeight: 350 }}>
