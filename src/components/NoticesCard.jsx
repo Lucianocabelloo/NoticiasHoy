@@ -98,7 +98,7 @@ export default function NoticesCard({notice}) {
           <CardContent>
         <Typography level="title-lg">NYC Coders</Typography>
         <Typography level="body-sm">
-            {truncatedDescription}
+            {truncatedDescription || <h2>Description not available</h2>}  
         </Typography>
         <CardOverflow>
         <Button     onClick={() => window.open(notice.link, '_blank')} variant="solid" color="danger" size="lg">
