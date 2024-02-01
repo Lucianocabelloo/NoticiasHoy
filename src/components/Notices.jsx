@@ -31,7 +31,7 @@ useEffect(() => {
 
   return (
     <>
-    <main className='flex flex-wrap gap-5'>
+    <main className='flex flex-wrap gap-5 p-5 justify-evenly'>
       {notices.map((notice) => {
         return(
           <NoticesCard notice={notice} key={notice.article_id}/>

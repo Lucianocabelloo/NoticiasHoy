@@ -29,7 +29,7 @@ export default function NoticesCard({notice}) {
         variant="soft"
         color='neutral'
         size="lg"
-        className="notices-card"
+        className="notices-card "
 
         sx={(theme) => ({
           width: 300,

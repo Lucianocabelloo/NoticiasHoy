@@ -18,12 +18,13 @@ body, html {
 
 
 .notices-card {
-  padding: 0px !important;/* Establece el ancho deseado para todas las cards */
+  padding: 16px !important;/* Establece el ancho deseado para todas las cards */
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around !important;
   align-items: center;
+  
 }
 
 .css-n7pinj{
