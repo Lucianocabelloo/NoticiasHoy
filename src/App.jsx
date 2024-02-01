@@ -1,11 +1,16 @@
 import { Notices } from "./components/Notices"
+import NoticesSearch from "./components/NoticesSearch"
+
 
 function App() {
 
 
   return (
     <>
-      <Notices/>
+    <div className="">
+      <NoticesSearch/>
+
+    </div>
     </>
   )
 }
